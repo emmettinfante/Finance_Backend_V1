@@ -1,0 +1,14 @@
+dotenv
+pandas
+plaid_assets
+plaid_transactions
+requests
+os
+datetime
+
+
+
+
+
+
+
