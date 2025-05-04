@@ -1,8 +1,6 @@
-dotenv
+python-dotenv
 pandas
 requests
-os
-datetime
 
 
 
