@@ -11,6 +11,6 @@ load_dotenv()
 token = os.getenv('lunchmoney_token')
 
 
-print(type(plaid_transactions.transactions(token)))
+plaid_transactions.transactions(token)
 
 # print(plaid_assets.assets(token))
