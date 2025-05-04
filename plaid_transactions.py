@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 from datetime import datetime
+
     
 def transactions(token):
 
@@ -59,4 +60,14 @@ def transactions(token):
     # Show preview of dataframe
     print(df)
     print('transactions downloaded successfully')
+    
+    # Method 1: Using open() and write() outside a context manager
+    file = open("/Users/m1max/Documents/Infante_Finances_Site/plaid_assets.txt", "w")
+    file.write('transactions downloaded successfully\n')
+    current_time = datetime.today().strftime('%Y-%m-%d %H:%M')
+    
+    print(current_time)
+    file.write(str(current_time))
+    file.close()
+    
     return df
