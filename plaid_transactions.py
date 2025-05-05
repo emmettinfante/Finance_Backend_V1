@@ -40,16 +40,20 @@ def transactions():
 
     while True:
         response = requests.get(url, headers=headers, params=params)
-        if response.status_code == 200:
-            data = response.json()
-            txns = data.get('transactions', [])
-            if not txns:
-                break
-            all_transactions.extend(txns)
-            params['offset'] += len(txns)
-        else:
+        
+        if response.status_code != 200:
             print(f"❌ Error {response.status_code}: {response.text}")
-            return  # Exit early if error
+            break
+
+        data = response.json()
+        txns = data.get('transactions', [])
+
+        if not txns:
+            print("✅ No more transactions to fetch.")
+            break
+
+        all_transactions.extend(txns)
+        params['offset'] += len(txns)
 
     df = pd.DataFrame(all_transactions)
     csv_path = "plaid_transactions.csv"
